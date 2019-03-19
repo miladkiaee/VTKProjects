@@ -1,0 +1,3 @@
+/home/milad/vtk/workspace/conformalMapping/build/CMakeFiles/rebuild_cache.dir
+/home/milad/vtk/workspace/conformalMapping/build/CMakeFiles/mapToSphere.dir
+/home/milad/vtk/workspace/conformalMapping/build/CMakeFiles/edit_cache.dir

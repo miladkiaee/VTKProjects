@@ -1,0 +1,31 @@
+cmake_minimum_required(VERSION 3.9.5)
+ 
+project(conformalMapping)
+ 
+find_package(ITK REQUIRED)
+include(${ITK_USE_FILE})
+if (ITKVtkGlue_LOADED)
+  find_package(VTK REQUIRED)
+  include(${VTK_USE_FILE})
+endif()
+ 
+set(itkLib
+    ITKCommon
+    ITKNumerics
+    ITKBasicFilters
+    ITKIO
+    itkvnl)
+set(Libraries ${Libraries}
+    ${itkLib}
+    )   
+    
+add_executable(conformalMapping MACOSX_BUNDLE mapToSphere.cxx myConformalFlatteningMeshFilter.txx)
+
+set(cexx conformalMapping)
+target_link_libraries(${cexx} ${Libraries})
+ 
+if( "${ITK_VERSION_MAJOR}" LESS 4 )
+	target_link_libraries(conformalMapping ITKReview ${ITK_LIBRARIES})
+else( "${ITK_VERSION_MAJOR}" LESS 4 )
+	target_link_libraries(conformalMapping ${ITK_LIBRARIES})
+endif( "${ITK_VERSION_MAJOR}" LESS 4 )
